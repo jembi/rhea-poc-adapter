@@ -777,6 +777,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 						.getPatientIdentifierTypeByName("RAMA");
 				PatientIdentifierType primaryCare = Context.getPatientService()
 						.getPatientIdentifierTypeByName("Primary Care ID Type");
+				PatientIdentifierType tracnet=Context.getPatientService().getPatientIdentifierTypeByName("TRACnet ID");
 				String id = "";
 				String idType = "";
 				int i = 0;
@@ -863,7 +864,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 					idType = patient.getPatientIdentifier().getIdentifierType()
 							.getName();
 					id = patient.getPatientIdentifier().getIdentifier();
-					if (id != "" && idType != "") {
+					if (id != "" && idType != "" && idType!=tracnet) {
 
 						pid.getPatientIdentifierList(i).getIDNumber()
 								.setValue(id);
