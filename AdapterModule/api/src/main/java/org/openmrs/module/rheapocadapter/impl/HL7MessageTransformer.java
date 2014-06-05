@@ -777,7 +777,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 						.getPatientIdentifierTypeByName("RAMA");
 				PatientIdentifierType primaryCare = Context.getPatientService()
 						.getPatientIdentifierTypeByName("Primary Care ID Type");
-				PatientIdentifierType tracnet=Context.getPatientService().getPatientIdentifierTypeByName("TRACnet ID");
+			
 				String id = "";
 				String idType = "";
 				int i = 0;
@@ -849,31 +849,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 						i++;
 					}
 				}
-				if (!patient.getPatientIdentifier().getIdentifierType()
-						.equals(nid)
-						&& !patient.getPatientIdentifier().getIdentifierType()
-								.equals(rama)
-						&& !patient.getPatientIdentifier().getIdentifierType()
-								.equals(mutuelle)
-						&& !patient.getPatientIdentifier().getIdentifierType()
-								.equals(primaryCare)) {
-					id = "";
-					idType = "";
-					log.info("Get "
-							+ patient.getPatientIdentifier().getIdentifier());
-					idType = patient.getPatientIdentifier().getIdentifierType()
-							.getName();
-					id = patient.getPatientIdentifier().getIdentifier();
-					if (id != "" && idType != "" && idType!=tracnet) {
-
-						pid.getPatientIdentifierList(i).getIDNumber()
-								.setValue(id);
-						pid.getPatientIdentifierList(i).getIdentifierTypeCode()
-								.setValue(idType);
-						i++;
-					}
-
-				}
+				
 
 			}
 			SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
