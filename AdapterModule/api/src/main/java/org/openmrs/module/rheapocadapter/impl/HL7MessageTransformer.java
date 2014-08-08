@@ -650,6 +650,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 		try {
 			message = getMessage(generateORU_R01Message(encounter.getPatient(),
 					encounters));
+			System.out.println(message);
 
 			log.info("after parsing " + message);
 		} catch (HL7Exception e) {
@@ -771,8 +772,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 			{
 				PatientIdentifierType nid = Context.getPatientService()
 						.getPatientIdentifierTypeByName("NID");
-				PatientIdentifierType mutuelle = Context.getPatientService()
-						.getPatientIdentifierTypeByName("Mutuelle");
+				//*PatientIdentifierType mutuelle = Context.getPatientService().getPatientIdentifierTypeByName("Mutuelle");
 				PatientIdentifierType rama = Context.getPatientService()
 						.getPatientIdentifierTypeByName("RAMA");
 				PatientIdentifierType primaryCare = Context.getPatientService()
@@ -813,7 +813,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 						i++;
 					}
 				}
-				if (getPatientIdentifierByIdentifierType(patient, mutuelle) != null) {
+				/*if (getPatientIdentifierByIdentifierType(patient, mutuelle) != null) {
 					log.info("Get Mutuelle");
 					id = "";
 					idType = "";
@@ -828,7 +828,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 								.setValue(idType);
 						i++;
 					}
-				}
+				}*/
 				if (getPatientIdentifierByIdentifierType(patient, primaryCare) != null) {
 					log.info("Get OMRS");
 					id = "";
@@ -1669,8 +1669,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 			{
 				PatientIdentifierType nid = Context.getPatientService()
 						.getPatientIdentifierTypeByName("NID");
-				PatientIdentifierType mutuelle = Context.getPatientService()
-						.getPatientIdentifierTypeByName("Mutuelle");
+				//PatientIdentifierType mutuelle = Context.getPatientService().getPatientIdentifierTypeByName("Mutuelle");
 				PatientIdentifierType rama = Context.getPatientService()
 						.getPatientIdentifierTypeByName("RAMA");
 				PatientIdentifierType primaryCare = Context.getPatientService()
@@ -1708,7 +1707,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 						i++;
 					}
 				}
-				if (getPatientIdentifierByIdentifierType(patient, mutuelle) != null) {
+				/*if (getPatientIdentifierByIdentifierType(patient, mutuelle) != null) {
 					log.info("Get Mutuelle");
 					id = "";
 					idType = "";
@@ -1723,7 +1722,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 								.setValue(idType);
 						i++;
 					}
-				}
+				}*/
 				if (getPatientIdentifierByIdentifierType(patient, primaryCare) != null) {
 					log.info("Get OMRS");
 					id = "";
@@ -1753,31 +1752,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 						i++;
 					}
 				}
-				if (!patient.getPatientIdentifier().getIdentifierType()
-						.equals(nid)
-						&& !patient.getPatientIdentifier().getIdentifierType()
-								.equals(rama)
-						&& !patient.getPatientIdentifier().getIdentifierType()
-								.equals(mutuelle)
-						&& !patient.getPatientIdentifier().getIdentifierType()
-								.equals(primaryCare)) {
-					id = "";
-					idType = "";
-					log.info("Get "
-							+ patient.getPatientIdentifier().getIdentifier());
-					idType = patient.getPatientIdentifier().getIdentifierType()
-							.getName();
-					id = patient.getPatientIdentifier().getIdentifier();
-					if (id != "" && idType != "") {
-
-						pid.getPatientIdentifierList(i).getIDNumber()
-								.setValue(id);
-						pid.getPatientIdentifierList(i).getIdentifierTypeCode()
-								.setValue(idType);
-						i++;
-					}
-
-				}
+				
 
 			}
 		} catch (Exception e) {
