@@ -772,7 +772,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 			{
 				PatientIdentifierType nid = Context.getPatientService()
 						.getPatientIdentifierTypeByName("NID");
-				//*PatientIdentifierType mutuelle = Context.getPatientService().getPatientIdentifierTypeByName("Mutuelle");
+				
 				PatientIdentifierType rama = Context.getPatientService()
 						.getPatientIdentifierTypeByName("RAMA");
 				PatientIdentifierType primaryCare = Context.getPatientService()
@@ -813,22 +813,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 						i++;
 					}
 				}
-				/*if (getPatientIdentifierByIdentifierType(patient, mutuelle) != null) {
-					log.info("Get Mutuelle");
-					id = "";
-					idType = "";
-					idType = RHEAHL7Constants.MUTUELLE_ID_TYPE;
-					id = getPatientIdentifierByIdentifierType(patient, mutuelle)
-							.getIdentifier();
-					if (id != "" && idType != "") {
-
-						pid.getPatientIdentifierList(i).getIDNumber()
-								.setValue(id);
-						pid.getPatientIdentifierList(i).getIdentifierTypeCode()
-								.setValue(idType);
-						i++;
-					}
-				}*/
+				
 				if (getPatientIdentifierByIdentifierType(patient, primaryCare) != null) {
 					log.info("Get OMRS");
 					id = "";
@@ -1669,7 +1654,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 			{
 				PatientIdentifierType nid = Context.getPatientService()
 						.getPatientIdentifierTypeByName("NID");
-				//PatientIdentifierType mutuelle = Context.getPatientService().getPatientIdentifierTypeByName("Mutuelle");
+				
 				PatientIdentifierType rama = Context.getPatientService()
 						.getPatientIdentifierTypeByName("RAMA");
 				PatientIdentifierType primaryCare = Context.getPatientService()
@@ -1707,22 +1692,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 						i++;
 					}
 				}
-				/*if (getPatientIdentifierByIdentifierType(patient, mutuelle) != null) {
-					log.info("Get Mutuelle");
-					id = "";
-					idType = "";
-					idType = mutuelle.getName();
-					id = getPatientIdentifierByIdentifierType(patient, mutuelle)
-							.getIdentifier();
-					if (id != "" && idType != "") {
-
-						pid.getPatientIdentifierList(i).getIDNumber()
-								.setValue(id);
-						pid.getPatientIdentifierList(i).getIdentifierTypeCode()
-								.setValue(idType);
-						i++;
-					}
-				}*/
+				
 				if (getPatientIdentifierByIdentifierType(patient, primaryCare) != null) {
 					log.info("Get OMRS");
 					id = "";
