@@ -650,7 +650,7 @@ public class HL7MessageTransformer implements MessageTransformer, Application {
 		try {
 			message = getMessage(generateORU_R01Message(encounter.getPatient(),
 					encounters));
-			System.out.println(message);
+		
 
 			log.info("after parsing " + message);
 		} catch (HL7Exception e) {
